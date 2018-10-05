@@ -20,7 +20,7 @@
 #include <AP_Volz_Protocol/AP_Volz_Protocol.h>
 #include <AP_SBusOut/AP_SBusOut.h>
 #include <AP_BLHeli/AP_BLHeli.h>
-
+#include <AP_MotorController/AP_MotorController.h>
 #define NUM_SERVO_CHANNELS 16
 
 class SRV_Channels;
@@ -449,6 +449,10 @@ private:
     // support for SBUS protocol
     AP_SBusOut sbus;
     static AP_SBusOut *sbus_ptr;
+
+    // support for serial motor controller: RoboClaw
+    AP_MotorController motorcontroller;
+    static AP_MotorController *motorcontroller_ptr;
 
 #if HAL_SUPPORT_RCOUT_SERIAL
     // support for BLHeli protocol

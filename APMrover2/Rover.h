@@ -390,6 +390,7 @@ private:
 private:
 
     // APMrover2.cpp
+    void test_function();
     void stats_update();
     void ahrs_update();
     void gcs_failsafe_check(void);
