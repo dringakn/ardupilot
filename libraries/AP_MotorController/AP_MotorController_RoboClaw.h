@@ -31,7 +31,7 @@ class AP_MotorController_RoboClaw : public AP_MotorController_Backend {
     // constructor
     AP_MotorController_RoboClaw(AP_MotorController &frontend, AP_SerialManager *serial_manager);
 
-    // update
+    // implementation of the pure virtual function update of the base class AP_MotorController_Backend
     void update(uint32_t motor1, uint32_t motor2) override;
 
   private:

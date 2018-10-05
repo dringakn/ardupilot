@@ -15,7 +15,6 @@
 
 #include "AP_MotorController.h"
 #include "AP_MotorController_Backend.h"
-
 #include "AP_MotorController_RoboClaw.h"
 
 extern const AP_HAL::HAL &hal;
@@ -42,6 +41,7 @@ const AP_Param::GroupInfo AP_MotorController::var_info[] = {
 
 AP_MotorController::AP_MotorController()
 {
+    // Set the initial paramters of the motorcontroller
     AP_Param::setup_object_defaults(this, var_info);
 }
 
@@ -61,7 +61,8 @@ void AP_MotorController::init(void) {
             break;
         }
         case MotorController_TYPE_NONE:
-        default:break;
+        default:
+            break;
     }
 }
 

@@ -24,6 +24,8 @@ class AP_MotorController_Backend;
 
 class AP_MotorController {
   public:
+    // AP_MotorController_Backend is a friend of AP_MotorController, therefore, 
+    // it's member functions can access the the private/protected members of AP_MotorController
     friend class AP_MotorController_Backend;
 
     AP_MotorController();
@@ -40,21 +42,23 @@ class AP_MotorController {
         CONTROL_POSITION = 2,
     };
 
-    // initialise any available position estimators
+    // initialise any available motor controller
     void init(void);
 
-    // update state of all beacons
+    // update state of the motor
     void update(uint32_t motor1, uint32_t motor2);
 
+    // status of the controller
     bool device_ready(void) const;
 
+    // parameters shared among all instances of this class
     static const struct AP_Param::GroupInfo var_info[];
 
   private:
 
     // parameters
-    AP_Int8 _type;
-    AP_Int8 _control;
+    AP_Int8 _type;    //Motor Controller device type: 0=None, 1=RoboClaw
+    AP_Int8 _control; //Motor Controller control type: 0=PWM,1=Speed-control,2=Position-control
 
     // external references
     AP_MotorController_Backend *_driver;

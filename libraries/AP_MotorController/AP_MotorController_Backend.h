@@ -24,9 +24,10 @@ class AP_MotorController_Backend {
     // constructor. This incorporates initialisation as well.
     AP_MotorController_Backend(AP_MotorController &frontend);
 
-    // update
+    // abstract function update which needs to be implemented in the derived class
     virtual void update(uint32_t motor1, uint32_t motor2) = 0;
 
+    // get the controller type
     int8_t get_control_type() const {
         return _frontend._control;
     }
